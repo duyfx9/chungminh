@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Chúng mình & những ngày yêu nhau</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;0,7..72,600;1,7..72,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>
+  /* ============================================================
+     🔒 DỮ LIỆU ĐÃ MÃ HÓA (AES-256-GCM, khóa suy ra từ mật khẩu qua PBKDF2)
+     Không có tên, ngày, hay ghi chú nào nằm dạng chữ thường trong file này.
+     Muốn tạo lại bằng dữ liệu thật của bạn: mở trang này với ?tool=encrypt
+     ở cuối URL (xem hướng dẫn ở cuối file).
+     ============================================================ */
+  const CONFIG = {
+    kdfIterations: 250000,
+    kdfSalt: "Opbd+rzgOlORAPafWBPruw==",
+    iv: "+c/71u6OebBHX4pH",
+    ciphertext: "wAtP3WzEf5BV/DwjErXKcY+wxY06g3fGg9BFFtIJYmHxfvo5DcOjPYem7uJsxAFhqQcs/NU4hRKX95Om/JAch1SLi2Zuqn9ihFTBjgZ/tmo5I9IPxNnkSrHptBecK2rRBor+/uH33o6sf2lkSr034f6rVzaZc1/08ypiexRYUaDulQGNTU3T84azuRwLqk/7csjWWwNZvdYTDDHA9abIhHadV/iln5iegd1y3E6BVY2Y9R5TZ0+fu7hQ5FFqBAjjTEVCL4I4mvGxNEgPlJIE2CgP66t2JQ3v7m+WysAeIbicE3nGkjQ0/E6FbW8Yj6BLz/vMbJCr6689W1ZX5cx1aDz4qtoiAybcman+X18KwAYrr02itiib+8+4bs7KMf1pbc8xjob4i7ieP/v+WbLh4Vw5+gIxMPyk+rtM2NZ9aX3QZXM4RYsaTEdLgEtRD91HkF7A+JuaCmsq04n4aXu3GjZqamArSszZC1N8vEPsggewoUGgQ0sI4ydbMi2bgukixRfg6dGCaXXPRUyRNbYmOqz3f9zm5GqewpVPaw6eEg/Z725r76Q5e/ubo8AZM1l0edWMg+XBxCfcGlFLpN3+xwXrwuvtT1ZvW0VpSdOg2/Thj4UF7s/UaQcyrrFZbDlk98ePEFo80DMNZpQH2Fp46I8/TODrlRXaGoMCEXQjpjqUV1q6fE+xPUSbIwz19ilmIIPZMYTrPBMRtvZzJkhuGcfcD/I431dPKObeTyVF5O1GzKBCTkl/X+VkF17e5M+w0QA4YD3Bu56rBi1RiLtelEd8arK6ZgwCo3AJ+Tpy4z5bQxtv0BWoAuaSF+/bidBj6ZsZuf/9zz3GRsXzZzLrkrDgbEMG3xp60JJclspMZCDKrmRrfsJ0PS24vZLApQHA79Kbp2c083A3ONhPkH5glieOanNuD1xEwt234GaVuoiTj890Nywryp5v++Lmo4in6dcmU5Hzhry1s086gA4Ugyt0dpwmlg8iaWaWwWJsI65Gj8vrr0JwqlhvFMAO2IO8pA1jCK6V7CxyDL36QKYucROux7fLVhdFmILaA60C+NLs9+v/KMDgOrPzslcLOeAGFlrxCmtRZ+U0zztqA7sNQgkWXN5NK8Ec15BhzfsuSWgGEvygw8YjV/xpjE/pGyx3qN2kHpAQpPif/XyEoB4LlzVMHck/Xpqcsl5+S56VUT62Zj8Fdc+/8uKOQlDC8SEBqJFZwxZdxDDMDkw2o3ABKa7Jh5yphGTeN3OxRuHgOJxflF//tqQj2nHAmK9XEhJ292QqcwXq5p1de66b/CJI3DVwfK4ehD3aC7GPXJtE/uQZ+i6XU+RWXsDqAjyiZ2XG478Rw+nVeDnbPUV8F59SdObM7jogzSRl1I2jRl5atgWA78//iddc5S5G0BVjxziGUBDyCdfY2diIen5bVdyrM5AyA3C1PRndtU4jHji2bwuyygXL5OCgqAlbyENnh4XrDRsMRUOjTBvBCcIdXgy3DcaVP1N5zpaWcF7vqGXlfE6PiZS8zX4yF5RXx+OIL3OfYlz4pEG3NOb7lreBXB2yeDz15vDbqMy9+e1hcR/KhhFbAmSOZQGabAbPypSvENJUbcBRJUR2pQF7fA12AmlB4nphRWViUQHPd1vbtkkoIXyUIm7Bz1lO7aHZgIHWe1tJ+vq83RtztMwILsbduMIYOB4mkwszShNHV8/R6Mrn28cgdKAmsRUOlxAeEagUDZt1p8piFxyLI70YzMYRHGoorrCb2FO0vjwbUKlY8yYYaAEpYcvh0KfSsOctVYLoD/vlM4T5rN315SsHdyznAIaCRDVC27FY9YiZNaqXENC0NfsXzsWXequobDagBbnQaMlhzKTo8OAwfv28/6LSbJpvG8p6bmm5a5CG0JeAjbBP9iEdzaSVT6dvELrWA1dwWDy3DFO+6THIloOkVmQql2eCVLPgIgHF3Ts9bWH/y/TZ2kN5tWsnwXsElrvm7sPBmRLG0FShd2WOHJ/g/qFPRNL7XmPzXl9JzYqPAPVL5Mpr7f3qhjaBqz86AVDBUDMiZwjZGqChsarZLVBhhr78cNJEz7Jf1kbbr2dvf5s38iDjx/dYfvTythUwNTmXYuR4aMCj4qsksXII76hldV1wGUVS/Fzi14o0b5uXgK0KiZSe3jX9mHe6CsyeVUl9BxnDS5XYLkiv9t0OlmxUsgVehX6V5XIIxschH5zmUlqVifyAzV14zocKph7YcxHcUGiIDLKuCLIl5gyyGf+TKxRXKRUkJSJk91fHLrXPhdhG7ghBbAbq50PpbpNoHJwZJxiUswnDwDCeMlbIYlQK6CnMhPcGkmdL9u2XGzWUcndmptD5h552FOKP0TS39Tb9/8MuCBmmjrjs8b+BgatVp1K94AJxRXP4b65CyFjQy7iovM2mc1+56JKYp9n4CdK/zeiDDswqoHCqhPs6viQg7InUQU9GWRV71tqt0yN+PCkXr2/60ANZ75KtNXnbD7YZZjuSg6Hhvl/jeC56cp1H96ObfdqFSDC6JMZwFM0m9qw+8JnqhmI+p3CAF2u1jAJq90AEIw4ZY0zsfAI4a10Brc1DA6oaBgBb2WD3RFpY141UWSii1vCcUwSWBxGf6KvIk6/STvkDtd56V+5mMHbMpdjfIGuJYv4N+deC68pu8mPHqelF/vWTkBleCdnwAy3bNMI3nV98RNGPNQn+7svLQAzWV23FTgReEs6VaaY+HtWoH2h86jlI9uV378n9NBcEIk5KTR1cgS6nk/Ylk93rE7IBnj4ANLUMvqGO7a8WPxjaOVf9a5nk2cLh5EIB/mDJXxyuJ/+mbMc19WrEJnMIG6Qv950gtTUVyeuk9eB03QoGaY1RRZV2PvABi/QXpQvZ5MoxvvoUUhRDtPZBOD7AaaNkpgytq0I2kfTXcuNXT/2WN6lZTcv3vLxPKDPkVJH8fthZRxruJuIyQqPJaMY523SPaBzZyjZPXXe2oMPcVH2w1HJ0q+jfwg6s4bl7OAkE5gh1EVbvtKK2JeSIcRBdxsLx7Irt3IF/k+tbuQo1lQ7DINW32Dw4AP2lQYJuctI4hMPUKZtdVlya0JIuDajZYmZFM+aWUxku8/ehJApf0MEPnnDaGF9R+OS27XbparuD8htcDVXv+t6DnirefaOvQs7EzAutjHgeI39E+C+8/dOWQJ//4Q65rAETp/DNOlCwDBW44nBCLIbvDKSBD5eAUKRBxSDlk4ZWOU6jpLasZREFyQCaTX8/F2weYFMz6nPLg1oZkl8+2WvPEDSQJxmPXa7dQpHaKb8+c3bV+5AX1JWeeYtyf0xJR+7JVVL+YsU09WEP58oFBITN+1fCcgOoTueAXZolDnAMG+oCiXp0E7Gj1gvd+itbFwZVkJXCmaPeCZWja2fh6wKiGqpwTIAt4/1Qd42hq9/cm5DZpFcoNur+KYyU2HJQGxq8A9PBXJ1kBjhS433E/6jE8RETxWMd/DmWbdil/pIvaR0+m2JqCgU2E/mzkR26c+iCuyTVpKaTV55ayUdb/WGSco7J6T3/it/2KMl/vmdZ5cWxdMDLir3j3wsKpOBoYTcdva0HhKrblulTKzHSODbEwCcqYUiMv1ty77WuOwwQYGeb1IPIKGUOv/E4cDphYqvfXEwZhj9cNIoJZ62w9oEQ5Qu4BjlfhQTuo7j1YLNM1CBKh4euI1DI05pyVfMvve80H8npXZbdYCiz0taInB3nLxnK/JKD4J2/8kTgEKtG5wmPj8o1K/qKheY0rNG4YYogo/jCl8zReiXYnoYQtkd81omjcXwfFRk/AGCxJDN8uFKBItswKtLzzdf4Keppur1vSJTRg19oskiPH/RwIhz2OzBSW2fvnshUptGOrSOi/bw0og5vbHION30Tm+6s9JLf1INU6w0cNZHXDkxpiWIDgE4xlhGtMLbc9PwaVEwSZFSn8hOfS7RCAcWD2lQ2O3BkZRGY7vQ/E4BAuXfHPesQq6yo93B0QTmuBLcl0hLm2VfISE7HKpKs6N75+EwIkRRMIHWa12g9CbuLXBquwZiuudlgfeTO/l16P5eJdDMcKe0Rx/fCp7Lgy3MMwyc/S32fvjHet3AGSV/O8ADdbO5yiVTk5HgS34s70y5wFIigVzald/3VWT6cdLfARtAfgdmfOHOnjvn7eQVueaQtr172nRdPz5yc4vAlxZto7/N7VVdG8NawwyUv2AwezKr5Sb2YPKln8INO5oDfnRyHDdbevxUTWC0/SAKLyBpRk3Bf+oxuGOA/6HRjhrZUI2ZB/OhugzY1WU3PA47kk3tf55S+WTGU4P8yGN6ai5cw9zzKnjZO2elAqP/MGzmGQBHMTux0/9pMvEgwlS9xAZSEyZ7nGH1XVtSOrOIXk/HNQ5LZ8q9289Ij1n6B+A0Aq2B8tm9/mxAqdBXbokY5yoR0kInfr1+VbUd4B13NwkG56JJChYJR7FkbulHijX25/xKRmudFf/iSRPGNym92PkNhPZFywy8jpI30DqbSlmtbpJ59U90x1C9aIjKoPhdxrFn+ti8zG0RH95d+x0nxY/AVkONv5hjzsVkzYQ39oc1ljXh73a0S3RQamQIo0BFyd+wUaLA/W8bdGxuFG04X+50k0s19tbRPfljjxf6tmtJ5CycAghZd1EhywQyWJe6OdtcvhF7iojgoYVKF4ezwxpbRMfpyBqf1DQEyVPfEsGj7ze2wUMNVAdrwZE6EordjJbblXvn1Cbuwpm87qTWByw1bMn5LTtoYjUunoxqzRhkUXrp8AmDFXAcD7zFxJ6W+vI3896HA9c2s6vaPqIFFiT+DCcrLcuIdLbwYy+3UQJiYG+I0NQyIGYAtH2+grr6odxWBkMuWKAG2G0kpmogfjIHluTF+/+mtiQZo17f4/562zKj6axJiudhOR6MPn0T0MUOXLTWWWXFMAvm7",
+  };
+</script>
+<style>
+  :root{
+    --paper: #FBF3EE;
+    --paper-deep: #F3E4DC;
+    --ink: #3A2A2E;
+    --ink-soft: #7A5C60;
+    --rose: #B4485E;
+    --rose-deep: #7E2F41;
+    --line: rgba(58,42,46,0.14);
+    --shadow: 0 10px 30px rgba(126,47,65,0.10);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper: #241A1C;
+      --paper-deep: #2E2023;
+      --ink: #F3E6E4;
+      --ink-soft: #C9A9AD;
+      --rose: #E38397;
+      --rose-deep: #F0AEBB;
+      --line: rgba(243,230,228,0.14);
+      --shadow: 0 10px 30px rgba(0,0,0,0.35);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper: #241A1C;
+    --paper-deep: #2E2023;
+    --ink: #F3E6E4;
+    --ink-soft: #C9A9AD;
+    --rose: #E38397;
+    --rose-deep: #F0AEBB;
+    --line: rgba(243,230,228,0.14);
+    --shadow: 0 10px 30px rgba(0,0,0,0.35);
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-padding-top: env(safe-area-inset-top,0px); }
+  body{
+    margin:0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter', -apple-system, sans-serif;
+    padding-top: env(safe-area-inset-top,0px);
+    padding-bottom: env(safe-area-inset-bottom,0px);
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap{
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{ padding: 56px 0 40px; text-align: center; position: relative; }
+  .hero .names{
+    font-family: 'Literata', serif; font-weight: 500;
+    font-size: clamp(28px, 7vw, 40px); letter-spacing: 0.01em;
+    margin: 0 0 6px; color: var(--rose-deep);
+  }
+  .hero .names .amp{ font-style: italic; font-weight: 400; color: var(--ink-soft); margin: 0 8px; }
+  .hero .since{ font-size: 13px; color: var(--ink-soft); margin: 0 0 32px; }
+
+  .counter{ display:flex; justify-content:center; align-items: baseline; gap: 4px; flex-wrap: wrap; }
+  .counter .big{
+    font-family:'Literata', serif; font-weight: 600;
+    font-size: clamp(64px, 22vw, 108px); line-height: 1;
+    color: var(--rose); font-variant-numeric: tabular-nums;
+  }
+  .counter .unit{ font-size: 16px; color: var(--ink-soft); margin-left: 6px; align-self:center; }
+  .breakdown{ margin-top: 18px; font-size: 14px; color: var(--ink-soft); letter-spacing: 0.02em; }
+  .breakdown b{ color: var(--ink); font-weight: 600; }
+
+  .cover-note{
+    margin-top: 28px; font-family:'Literata', serif; font-style: italic;
+    font-size: 16px; color: var(--ink-soft); max-width: 42ch;
+    margin-left:auto; margin-right:auto; line-height: 1.6;
+  }
+
+  /* ---------- Next milestone ---------- */
+  .next-card{
+    margin: 44px 0 0; padding: 22px 24px; border-radius: 18px;
+    background: var(--paper-deep); box-shadow: var(--shadow);
+    display:flex; align-items:center; gap: 16px;
+  }
+  .next-card .emoji{ font-size: 30px; line-height:1; }
+  .next-card .label{ font-size: 12px; color: var(--ink-soft); margin-bottom: 3px; }
+  .next-card .title{ font-family:'Literata', serif; font-size: 18px; font-weight:500; }
+  .next-card .days{ margin-left:auto; text-align:right; }
+  .next-card .days .n{ font-size: 22px; font-weight:700; color: var(--rose); font-variant-numeric: tabular-nums; }
+  .next-card .days .u{ font-size: 11px; color: var(--ink-soft); display:block; }
+
+  /* ---------- Holidays ---------- */
+  #holidaysSection{ margin-top: 36px; display:none; }
+  #holidaysSection .h-heading{
+    font-family:'Literata', serif; font-size: 15px; font-weight: 500;
+    color: var(--ink-soft); margin-bottom: 10px;
+  }
+  .h-row{
+    display:flex; align-items:center; gap: 12px;
+    padding: 10px 0; border-bottom: 1px solid var(--line);
+    font-size: 14px;
+  }
+  .h-row:last-child{ border-bottom: none; }
+  .h-row .h-emoji{ font-size: 17px; width: 22px; text-align:center; }
+  .h-row .h-title{ flex:1; }
+  .h-row .h-date{ font-size: 12px; color: var(--ink-soft); margin-right: 10px; white-space:nowrap; }
+  .h-row .h-count{ font-size: 12px; color: var(--rose); font-weight:600; white-space:nowrap; }
+
+  /* ---------- Timeline ---------- */
+  .timeline-heading{ margin: 56px 0 4px; font-family:'Literata', serif; font-size: 22px; font-weight: 500; }
+  .timeline-sub{ font-size: 13px; color: var(--ink-soft); margin-bottom: 28px; }
+  .timeline{ position: relative; padding-left: 28px; border-left: 1px solid var(--line); }
+  .tl-year{
+    position: sticky; top: calc(10px + env(safe-area-inset-top,0px)); z-index: 5;
+    display: inline-block; font-family: 'Literata', serif; font-weight: 600;
+    font-size: 13px; letter-spacing: 0.04em; color: var(--rose);
+    background: var(--paper); padding: 4px 10px 4px 0; margin: 0 0 14px -28px;
+  }
+  .tl-year::before{ content: ''; position: absolute; left: -1px; top: 0; bottom: 0; width: 2px; background: var(--rose); }
+  .tl-year-group:first-child .tl-year{ margin-top: 0; }
+  .tl-year-group{ margin-top: 6px; }
+  .tl-item{ position: relative; padding-bottom: 30px; }
+  .tl-item:last-child{ padding-bottom: 4px; }
+  .tl-item::before{
+    content: attr(data-emoji); position:absolute; left: -46px; top: -2px;
+    width: 34px; height: 34px; background: var(--paper); border: 1px solid var(--line);
+    border-radius: 50%; display:flex; align-items:center; justify-content:center; font-size: 15px;
+  }
+  .tl-date{ font-size: 12px; color: var(--ink-soft); letter-spacing: 0.02em; margin-bottom: 3px; }
+  .tl-title{ font-family:'Literata', serif; font-size: 17px; font-weight: 500; margin-bottom: 3px; }
+  .tl-note{ font-size: 14px; color: var(--ink-soft); line-height: 1.5; }
+  .tl-item.is-future .tl-title, .tl-item.is-future .tl-date{ color: var(--ink-soft); }
+  .tl-item.is-future::before{ opacity: 0.55; }
+
+  footer{ margin-top: 60px; text-align:center; font-size: 12px; color: var(--ink-soft); }
+  .heart-line{ text-align:center; font-size: 12px; letter-spacing: 0.3em; color: var(--rose); opacity: 0.6; margin-top: 8px; }
+
+  /* ---------- Lock screen ---------- */
+  body.locked .wrap{ display:none; }
+  #lockScreen{
+    position: fixed; inset: 0; background: var(--paper);
+    display:flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: 24px; padding-top: calc(24px + env(safe-area-inset-top,0px));
+    padding-bottom: calc(24px + env(safe-area-inset-bottom,0px));
+    z-index: 50; text-align:center;
+  }
+  body:not(.locked) #lockScreen{ display:none; }
+  #lockScreen .lock-emoji{ font-size: 34px; margin-bottom: 18px; }
+  #lockScreen .lock-title{ font-family:'Literata', serif; font-size: 20px; font-weight: 500; margin-bottom: 6px; }
+  #lockScreen .lock-sub{ font-size: 13px; color: var(--ink-soft); margin-bottom: 26px; }
+  #lockForm{ width: 100%; max-width: 280px; display:flex; flex-direction: column; gap: 12px; }
+  #lockInput{
+    width: 100%; font-family: 'Inter', sans-serif; font-size: 16px;
+    padding: 14px 16px; border-radius: 14px; border: 1px solid var(--line);
+    background: var(--paper-deep); color: var(--ink); text-align:center;
+    letter-spacing: 0.04em; outline: none;
+  }
+  #lockInput:focus{ border-color: var(--rose); }
+  #lockSubmit{
+    width: 100%; font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 600;
+    padding: 14px 16px; border-radius: 14px; border: none;
+    background: var(--rose); color: var(--paper); cursor: pointer;
+  }
+  #lockSubmit:disabled{ opacity: 0.6; }
+  #lockSubmit:active{ background: var(--rose-deep); }
+  #lockError{ font-size: 12.5px; color: var(--rose); min-height: 16px; margin-top: 2px; }
+  @keyframes shake{
+    10%,90%{ transform: translateX(-1px); } 20%,80%{ transform: translateX(2px); }
+    30%,50%,70%{ transform: translateX(-4px); } 40%,60%{ transform: translateX(4px); }
+  }
+  #lockForm.shake{ animation: shake 0.45s; }
+
+  /* ---------- Mobile refinements ---------- */
+  @media (max-width: 380px){
+    .wrap{ padding: 0 18px 64px; }
+    .hero{ padding: 40px 0 30px; }
+    .counter .big{ font-size: clamp(54px, 20vw, 88px); }
+    .next-card{ padding: 18px; gap: 12px; }
+    .next-card .title{ font-size: 16px; }
+    .timeline{ padding-left: 24px; }
+    .tl-item::before{ left: -40px; width: 30px; height: 30px; font-size: 13px; }
+  }
+
+  /* ---------- Encrypt tool mode (?tool=encrypt) ---------- */
+  #toolScreen{
+    display:none; max-width: 640px; margin: 0 auto; padding: 32px 20px 80px;
+  }
+  #toolScreen.active{ display:block; }
+  body.tool-mode .wrap, body.tool-mode #lockScreen{ display:none !important; }
+  #toolScreen h1{ font-family:'Literata', serif; font-size: 22px; font-weight:500; margin-bottom: 4px; }
+  #toolScreen p.hint{ font-size: 13px; color: var(--ink-soft); margin-bottom: 20px; line-height:1.5; }
+  #toolScreen label{ display:block; font-size: 13px; font-weight:600; margin: 18px 0 6px; }
+  #toolScreen textarea, #toolScreen input[type=password], #toolScreen input[type=number]{
+    width:100%; font-family: 'Inter', ui-monospace, monospace; font-size: 13px;
+    padding: 12px 14px; border-radius: 12px; border:1px solid var(--line);
+    background: var(--paper-deep); color: var(--ink); outline:none;
+  }
+  #toolScreen textarea{ min-height: 220px; resize: vertical; }
+  #toolScreen button{
+    margin-top: 18px; font-family:'Inter',sans-serif; font-weight:600; font-size:14px;
+    padding: 12px 20px; border-radius: 12px; border:none; background: var(--rose);
+    color: var(--paper); cursor:pointer;
+  }
+  #toolOutput{ margin-top: 22px; }
+  #toolOutput textarea{ min-height: 140px; }
+  #toolStatus{ font-size: 12.5px; color: var(--ink-soft); margin-top: 8px; }
+</style>
+</head>
+<body class="locked">
+
+<div id="lockScreen">
+  <div class="lock-emoji">🔒</div>
+  <div class="lock-title">Chỉ dành cho một người thôi</div>
+  <div class="lock-sub">Nhập mật khẩu để mở nhé</div>
+  <form id="lockForm" autocomplete="off">
+    <input id="lockInput" type="password" inputmode="text" placeholder="Mật khẩu" autocomplete="off" />
+    <div id="lockError"></div>
+    <button id="lockSubmit" type="submit">Mở</button>
+  </form>
+</div>
+
+<div class="wrap">
+  <div class="hero">
+    <p class="names" id="namesLine"></p>
+    <p class="since" id="sinceLine"></p>
+    <div class="counter">
+      <span class="big" id="dayCount">0</span>
+      <span class="unit">ngày</span>
+    </div>
+    <div class="breakdown" id="breakdown"></div>
+    <p class="cover-note" id="coverNote"></p>
+  </div>
+
+  <div class="next-card" id="nextCard" style="display:none">
+    <div class="emoji" id="nextEmoji">🎉</div>
+    <div>
+      <div class="label">Sắp tới</div>
+      <div class="title" id="nextTitle"></div>
+    </div>
+    <div class="days">
+      <span class="n" id="nextDays"></span>
+      <span class="u">ngày nữa</span>
+    </div>
+  </div>
+
+  <div id="holidaysSection">
+    <div class="h-heading">Ngày lễ sắp tới</div>
+    <div id="holidaysList"></div>
+  </div>
+
+  <div class="timeline-heading">Những cột mốc</div>
+  <div class="timeline-sub">Từng ngày, từng chuyện nhỏ, gộp lại thành chúng mình.</div>
+  <div class="timeline" id="timeline"></div>
+
+  <div class="heart-line">· · ·</div>
+  <footer>làm bằng tay, gửi bằng NFC 🤍</footer>
+</div>
+
+<!-- ============================================================
+     🔧 CHẾ ĐỘ TẠO MÃ HÓA — chỉ hiện khi mở link kèm ?tool=encrypt
+     Toàn bộ tính toán chạy ngay trong trình duyệt của bạn, không gửi
+     dữ liệu đi đâu cả. Dùng để tạo lại CONFIG với dữ liệu thật của bạn.
+     ============================================================ -->
+<div id="toolScreen">
+  <h1>Tạo dữ liệu mã hóa</h1>
+  <p class="hint">
+    Sửa nội dung JSON bên dưới thành thông tin thật của hai bạn, nhập một mật khẩu,
+    bấm "Tạo mã hóa". Mọi thứ tính toán ngay trên máy bạn — không có gì được gửi đi.
+    Sau đó copy 4 giá trị hiện ra, dán đè vào <code>CONFIG</code> ở đầu file <code>index.html</code>,
+    rồi bỏ <code>?tool=encrypt</code> khỏi URL khi dùng link thật.
+  </p>
+
+  <label for="toolJson">Nội dung (JSON)</label>
+  <textarea id="toolJson">{
+  "names": ["Duy", "Người thương"],
+  "startDate": "2023-02-14",
+  "coverNote": "Từ hôm đó đến giờ, mỗi ngày đều đáng được nhớ.",
+  "milestones": [
+    { "date": "2023-02-14", "title": "Ngày đầu tiên", "note": "Chính thức yêu nhau.", "emoji": "💌" },
+    { "date": "2024-02-14", "title": "Kỷ niệm 1 năm", "note": "", "emoji": "🎂" }
+  ],
+  "holidays": [
+    { "date": "2026-10-20", "title": "Ngày Phụ nữ Việt Nam", "emoji": "🌷" },
+    { "date": "2026-11-20", "title": "Ngày Nhà giáo Việt Nam", "emoji": "🍎" },
+    { "date": "2026-12-24", "title": "Giáng sinh", "emoji": "🎄" },
+    { "date": "2027-01-01", "title": "Tết Dương lịch 2027", "emoji": "🎆" },
+    { "date": "2027-02-06", "title": "Tết Nguyên Đán 2027", "emoji": "🧧" }
+  ]
+}</textarea>
+
+  <label for="toolPassword">Mật khẩu</label>
+  <input id="toolPassword" type="password" autocomplete="off" placeholder="Mật khẩu thật của bạn" />
+
+  <label for="toolIterations">Số vòng lặp PBKDF2 (mặc định 250000, để nguyên là được)</label>
+  <input id="toolIterations" type="number" value="250000" />
+
+  <button id="toolGenerate" type="button">Tạo mã hóa</button>
+  <div id="toolStatus"></div>
+
+  <div id="toolOutput" style="display:none">
+    <label for="toolResult">Dán 4 dòng này vào CONFIG (giữ nguyên dấu ngoặc kép)</label>
+    <textarea id="toolResult" readonly></textarea>
+  </div>
+</div>
+
+<script>
+(function(){
+  const params = new URLSearchParams(location.search);
+  const isToolMode = params.get('tool') === 'encrypt';
+
+  function b64ToBuf(b64){
+    const bin = atob(b64);
+    const buf = new Uint8Array(bin.length);
+    for (let i=0; i<bin.length; i++) buf[i] = bin.charCodeAt(i);
+    return buf;
+  }
+  function bufToB64(buf){
+    let bin = '';
+    const bytes = new Uint8Array(buf);
+    for (let i=0; i<bytes.length; i++) bin += String.fromCharCode(bytes[i]);
+    return btoa(bin);
+  }
+  async function deriveKey(password, saltBuf, iterations, usage){
+    const baseKey = await crypto.subtle.importKey(
+      'raw', new TextEncoder().encode(password), {name:'PBKDF2'}, false, ['deriveKey']
+    );
+    return crypto.subtle.deriveKey(
+      { name:'PBKDF2', salt: saltBuf, iterations: iterations, hash:'SHA-256' },
+      baseKey, { name:'AES-GCM', length:256 }, false, [usage]
+    );
+  }
+
+  // ---------------- Tool mode (?tool=encrypt) ----------------
+  if (isToolMode) {
+    document.body.classList.add('tool-mode');
+    document.getElementById('toolScreen').classList.add('active');
+    document.getElementById('toolGenerate').addEventListener('click', async function(){
+      const statusEl = document.getElementById('toolStatus');
+      const outWrap = document.getElementById('toolOutput');
+      const resultEl = document.getElementById('toolResult');
+      statusEl.textContent = '';
+      outWrap.style.display = 'none';
+      let data;
+      try {
+        data = JSON.parse(document.getElementById('toolJson').value);
+      } catch(e) {
+        statusEl.textContent = 'JSON không hợp lệ: ' + e.message;
+        return;
+      }
+      const password = document.getElementById('toolPassword').value;
+      if (!password) { statusEl.textContent = 'Nhập mật khẩu trước đã.'; return; }
+      const iterations = parseInt(document.getElementById('toolIterations').value, 10) || 250000;
+
+      statusEl.textContent = 'Đang tạo khóa và mã hóa...';
+      const salt = crypto.getRandomValues(new Uint8Array(16));
+      const iv = crypto.getRandomValues(new Uint8Array(12));
+      const key = await deriveKey(password, salt, iterations, 'encrypt');
+      const plaintext = new TextEncoder().encode(JSON.stringify(data));
+      const ciphertextBuf = await crypto.subtle.encrypt({name:'AES-GCM', iv}, key, plaintext);
+
+      const out =
+        'kdfIterations: ' + iterations + ',\n' +
+        'kdfSalt: "' + bufToB64(salt) + '",\n' +
+        'iv: "' + bufToB64(iv) + '",\n' +
+        'ciphertext: "' + bufToB64(ciphertextBuf) + '",';
+      resultEl.value = out;
+      outWrap.style.display = 'block';
+      statusEl.textContent = 'Xong. Copy đoạn trên, dán đè vào CONFIG trong index.html.';
+    });
+    return; // don't run normal page logic in tool mode
+  }
+
+  // ---------------- Normal mode: lock screen + decrypt ----------------
+  const UNLOCK_KEY = 'ourpage_unlocked_data';
+  const body = document.body;
+
+  function unlockUI(){ body.classList.remove('locked'); }
+
+  async function tryDecrypt(password){
+    const salt = b64ToBuf(CONFIG.kdfSalt);
+    const iv = b64ToBuf(CONFIG.iv);
+    const ciphertext = b64ToBuf(CONFIG.ciphertext);
+    const key = await deriveKey(password, salt, CONFIG.kdfIterations, 'decrypt');
+    const plainBuf = await crypto.subtle.decrypt({name:'AES-GCM', iv}, key, ciphertext);
+    return JSON.parse(new TextDecoder().decode(plainBuf));
+  }
+
+  let cachedData = null;
+  try {
+    const cached = sessionStorage.getItem(UNLOCK_KEY);
+    if (cached) cachedData = JSON.parse(cached);
+  } catch(e){}
+
+  if (cachedData) {
+    unlockUI();
+    renderPage(cachedData);
+  } else {
+    const form = document.getElementById('lockForm');
+    const input = document.getElementById('lockInput');
+    const error = document.getElementById('lockError');
+    const submitBtn = document.getElementById('lockSubmit');
+    form.addEventListener('submit', async function(e){
+      e.preventDefault();
+      submitBtn.disabled = true;
+      error.textContent = '';
+      try {
+        const data = await tryDecrypt(input.value);
+        try { sessionStorage.setItem(UNLOCK_KEY, JSON.stringify(data)); } catch(e){}
+        unlockUI();
+        renderPage(data);
+      } catch (err) {
+        error.textContent = 'Chưa đúng rồi, thử lại nhé.';
+        form.classList.remove('shake');
+        void form.offsetWidth;
+        form.classList.add('shake');
+        input.value = '';
+        input.focus();
+      }
+      submitBtn.disabled = false;
+    });
+    setTimeout(() => input.focus(), 200);
+  }
+
+  function parseDate(s){
+    const [y,m,d] = s.split('-').map(Number);
+    return new Date(y, m-1, d);
+  }
+  function fmt(date){
+    return date.toLocaleDateString('vi-VN', { day:'numeric', month:'long', year:'numeric' });
+  }
+  function startOfDay(d){ const x = new Date(d); x.setHours(0,0,0,0); return x; }
+
+  function renderPage(data){
+    const start = startOfDay(parseDate(data.startDate));
+    const today = startOfDay(new Date());
+    const msPerDay = 86400000;
+    const totalDays = Math.round((today - start) / msPerDay);
+
+    document.getElementById('namesLine').innerHTML =
+      data.names[0] + '<span class="amp">&amp;</span>' + data.names[1];
+    document.getElementById('sinceLine').textContent = 'yêu nhau từ ' + fmt(start);
+    document.getElementById('dayCount').textContent = totalDays.toLocaleString('vi-VN');
+    document.getElementById('coverNote').textContent = data.coverNote || '';
+
+    let y = today.getFullYear() - start.getFullYear();
+    let m = today.getMonth() - start.getMonth();
+    let d = today.getDate() - start.getDate();
+    if (d < 0) {
+      m -= 1;
+      const prevMonth = new Date(today.getFullYear(), today.getMonth(), 0);
+      d += prevMonth.getDate();
+    }
+    if (m < 0) { y -= 1; m += 12; }
+    const parts = [];
+    if (y > 0) parts.push('<b>' + y + '</b> năm');
+    if (m > 0) parts.push('<b>' + m + '</b> tháng');
+    parts.push('<b>' + d + '</b> ngày');
+    document.getElementById('breakdown').innerHTML = parts.join(' &nbsp;·&nbsp; ');
+
+    const milestones = (data.milestones || [])
+      .map(ms => ({ ...ms, dateObj: startOfDay(parseDate(ms.date)) }))
+      .sort((a,b) => a.dateObj - b.dateObj);
+
+    function nextOccurrence(dateObj){
+      let occ = new Date(today.getFullYear(), dateObj.getMonth(), dateObj.getDate());
+      if (occ < today) occ = new Date(today.getFullYear()+1, dateObj.getMonth(), dateObj.getDate());
+      return occ;
+    }
+    let upcoming = null;
+    milestones.forEach(ms => {
+      const occ = nextOccurrence(ms.dateObj);
+      const daysAway = Math.round((occ - today) / msPerDay);
+      if (daysAway >= 0 && (!upcoming || daysAway < upcoming.daysAway)) {
+        upcoming = { ...ms, daysAway };
+      }
+    });
+    if (upcoming) {
+      document.getElementById('nextCard').style.display = 'flex';
+      document.getElementById('nextEmoji').textContent = upcoming.emoji || '🎉';
+      document.getElementById('nextTitle').textContent = upcoming.title;
+      document.getElementById('nextDays').textContent =
+        upcoming.daysAway === 0 ? 'Hôm nay!' : upcoming.daysAway;
+    }
+
+    // ngày lễ sắp tới — danh sách liệt kê sẵn (không recurring, vì lễ âm lịch
+    // đổi ngày dương mỗi năm), chỉ lấy những ngày còn ở tương lai
+    const upcomingHolidays = (data.holidays || [])
+      .map(h => ({ ...h, dateObj: startOfDay(parseDate(h.date)) }))
+      .filter(h => h.dateObj >= today)
+      .sort((a,b) => a.dateObj - b.dateObj)
+      .slice(0, 4);
+    if (upcomingHolidays.length) {
+      document.getElementById('holidaysSection').style.display = 'block';
+      const list = document.getElementById('holidaysList');
+      upcomingHolidays.forEach(h => {
+        const daysAway = Math.round((h.dateObj - today) / msPerDay);
+        const row = document.createElement('div');
+        row.className = 'h-row';
+        row.innerHTML =
+          '<span class="h-emoji">' + (h.emoji || '📌') + '</span>' +
+          '<span class="h-title">' + h.title + '</span>' +
+          '<span class="h-date">' + fmt(h.dateObj) + '</span>' +
+          '<span class="h-count">' + (daysAway === 0 ? 'Hôm nay' : daysAway + ' ngày') + '</span>';
+        list.appendChild(row);
+      });
+    }
+
+    const tl = document.getElementById('timeline');
+    let currentYear = null;
+    let currentGroup = null;
+    milestones.forEach(ms => {
+      const yr = ms.dateObj.getFullYear();
+      if (yr !== currentYear) {
+        currentYear = yr;
+        currentGroup = document.createElement('div');
+        currentGroup.className = 'tl-year-group';
+        const yearLabel = document.createElement('div');
+        yearLabel.className = 'tl-year';
+        yearLabel.textContent = yr;
+        currentGroup.appendChild(yearLabel);
+        tl.appendChild(currentGroup);
+      }
+      const item = document.createElement('div');
+      item.className = 'tl-item' + (ms.dateObj > today ? ' is-future' : '');
+      item.setAttribute('data-emoji', ms.emoji || '♡');
+      item.innerHTML =
+        '<div class="tl-date">' + fmt(ms.dateObj) + '</div>' +
+        '<div class="tl-title">' + ms.title + '</div>' +
+        (ms.note ? '<div class="tl-note">' + ms.note + '</div>' : '');
+      currentGroup.appendChild(item);
+    });
+  }
+})();
+</script>
+</body>
+</html>
